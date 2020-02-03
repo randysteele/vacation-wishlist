@@ -10,5 +10,13 @@ class ApplicationController < Sinatra::Base
   get "/" do
     erb :welcome
   end
+  
+  get "/home" do 
+    erb :home 
+  end
+  
+  get "/new" do 
+    erb :new
+  end
 
 end
