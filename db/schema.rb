@@ -11,14 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200203231546) do
-
-  create_table "destinations", force: :cascade do |t|
-    t.string  "city"
-    t.string  "state"
-    t.integer "distance"
-    t.string  "top_attraction"
-  end
+ActiveRecord::Schema.define(version: 20200203231319) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
