@@ -5,37 +5,25 @@ class ApplicationController < Sinatra::Base
  configure do
     set :public_folder, 'public'
     set :views, 'app/views'
-    set :session_secret, "password_security"
+    set :session_secret, "vacation_secret"
   end
 
   get "/" do
     erb :index
   end
   
-  get "/signup" do 
-    erb :signup
+  get "/index" do 
+    erb :index
   end
   
-#   post "/signup" do
-#     if params[:username] == "" || params[:password] == ""
-#       redirect '/failure'
-#     else
-#       User.create(username: params[:username], password: params[:password])
-#       redirect '/login'
-#     end
-# end
+   helpers do
 
-    post "/signup" do
-   params[:username] == "" || params[:password] == ""
-   redirect '/index'
-  end
-
-  get "/home" do 
-    erb :home 
-  end
+    def logged_in?
+      !!current_user
+    end
   
-  get "/new" do 
-    erb :new
-  end
-
+   def current_user
+      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+    end
+ end
 end
