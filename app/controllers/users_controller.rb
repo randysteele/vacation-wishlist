@@ -4,7 +4,7 @@ class UsersControlller < ApplicationController
     if !logged_in?
       redirect '/destinations'
     end
-    
+  end  
     
    
     
