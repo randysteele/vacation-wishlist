@@ -1,4 +1,4 @@
-class DestinationController < Sinatra::Base
+class DestinationController < ApplicationController
   
   get "/destinations" do 
     if logged_in?
@@ -9,13 +9,12 @@ class DestinationController < Sinatra::Base
     end
     end
     
-    get '/destinations/new' do
-    if logged_in?
-      erb :'destinations/create_destination'
-    else
-      redirect to '/login'
-    end
-  end
+    get '/create_destination' do
+   if logged_in?
+     erb :create_destination
+  # else redirect '/login'
+     end
+  end 
   
   post '/destinations' do
     if logged_in?
@@ -29,10 +28,13 @@ class DestinationController < Sinatra::Base
           redirect to "/destinations/new"
         end
       end
-    else
-      redirect to '/login'
+    # else
+    #   redirect to '/login'
     end
   end
+  
+ 
+  
 
 
 end

@@ -1,0 +1,6 @@
+<p> Here are your Vacation Wishlist Destinations, <%= @user.username %>
+<% @user.Destinations.each do |destination| %>
+  <div>
+    <%= destination.content %>
+  </div>
+<% end %>
