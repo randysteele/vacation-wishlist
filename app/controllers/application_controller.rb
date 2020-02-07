@@ -55,5 +55,12 @@ class ApplicationController < Sinatra::Base
       redirect '/destinations'
     end
   end  
+  
+  get '/destinations/new'
+   if logged_in?
+     erb: 'destinations/create_destination' 
+   else redirect '/login'
+     end
+  end 
 
 end
