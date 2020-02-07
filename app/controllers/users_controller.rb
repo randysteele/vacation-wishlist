@@ -1,4 +1,4 @@
-class UsersControlller < ApplicationController 
+class UsersController < ApplicationController 
   
    get '/users/:id' do
     if !logged_in?
@@ -19,10 +19,10 @@ class UsersControlller < ApplicationController
     end
 end
 
-    post "/signup" do
-   params[:username] == "" || params[:password] == ""
-   redirect '/index'
-  end
+  #   post "/signup" do
+  # if params[:username] == "" || params[:password] == ""
+  # redirect '/index'
+  # end
 
   get "/home" do 
     erb :home 
