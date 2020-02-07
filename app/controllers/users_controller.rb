@@ -1,13 +1,17 @@
 class UsersController < ApplicationController 
   
+  
+   get '/users/signup' do 
+      
+    erb :'/users/signup'
+  end
+  
   get '/users/:id' do
     @user = User.find_by_id(params[:id])
-    erb :'users/show'
+    erb :'/users/edit'
   end  
     
-    get "/signup" do 
-    erb :signup
-  end
+   
   
   post "/signup" do
     if params[:username] == "" || params[:password] == ""
