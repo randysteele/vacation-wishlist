@@ -24,7 +24,7 @@ class ApplicationController < Sinatra::Base
   post '/login' do
     @destination = Destination.all 
     erb :login
-    redirect '/home.erb'
+    redirect '/create_destination'
   end
   
    helpers do
@@ -56,9 +56,9 @@ class ApplicationController < Sinatra::Base
     end
   end  
   
-  get '/destinations/new'
+  get '/destinations/new' do
    if logged_in?
-     erb: 'destinations/create_destination' 
+     erb :'/destinations/create_destination' 
    else redirect '/login'
      end
   end 
