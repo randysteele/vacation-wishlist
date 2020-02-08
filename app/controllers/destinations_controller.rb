@@ -5,15 +5,9 @@ class DestinationController < ApplicationController
       erb '/destinations/show'
     end
     
-    get '/create_destination' do
-   if logged_in?
-     erb :create_destination
-  # else redirect '/login'
-     end
-  end 
-  
+   
   get '/destinations/new' do 
-    erb :'/destination/new'
+    erb :'/destinations/new'
   end
   
   post '/destinations' do
