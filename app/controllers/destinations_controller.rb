@@ -2,8 +2,7 @@ class DestinationController < ApplicationController
   
   get "/destinations" do 
     @destination = Destination.all 
-      erb :create_destinations
-    
+      erb '/destinations/show'
     end
     
     get '/create_destination' do
@@ -13,12 +12,16 @@ class DestinationController < ApplicationController
      end
   end 
   
+  get '/destinations/new' do 
+    erb :'/destination/new'
+  end
+  
   post '/destinations' do
     if logged_in?
       if params[:content] == ""
         redirect to "/destinations/new"
       else
-        @tweet = current_user.tweets.build(content: params[:content])
+        @destination = current_user.destination.build(content: params[:content])
         if @destination.save
           redirect to "/destinations/#{@destinations.id}"
         else
@@ -29,9 +32,4 @@ class DestinationController < ApplicationController
     #   redirect to '/login'
     end
   end
-  
- 
-  
-
-
 end
