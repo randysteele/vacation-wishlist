@@ -1,4 +1,4 @@
-class DestinationController < ApplicationController
+class DestinationsController < ApplicationController
   
   get "/destinations" do 
     @destination = Destination.all 
