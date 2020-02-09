@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       redirect '/failure'
     else
       User.create(username: params[:username], password: params[:password])
-      redirect '/login'
+      redirect '/show'
     end
 end
   

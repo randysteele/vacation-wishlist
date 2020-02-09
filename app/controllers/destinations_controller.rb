@@ -10,7 +10,7 @@ class DestinationsController < ApplicationController
     erb :'/destinations/new'
   end
   
-  post '/destinations' do
+  post '/destinations/new' do
     if logged_in?
       if params[:content] == ""
         redirect to "/destinations/new"
@@ -25,5 +25,10 @@ class DestinationsController < ApplicationController
     # else
     #   redirect to '/login'
     end
+  end
+  
+  get '/destinations/show' do
+    
+    erb :'/destinations/show'
   end
 end
