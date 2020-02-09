@@ -12,23 +12,22 @@ class DestinationsController < ApplicationController
   
   post '/destinations/new' do
     if logged_in?
-      if params[:content] == ""
-        redirect to "/destinations/new"
-      else
-        @destinations = current_user.destination.build(content: params[:content])
-        if @destinations.save
-          redirect to "/destinations/#{@destinations.id}"
-        else
-          redirect to "/destinations/new"
-        end
-      end
-    # else
-    #   redirect to '/login'
-    end
+      @destinations = Destinations.all 
+      erb :'/destinations/new'
+    else 
+       redirect to '/login'
+     end
   end
+  
   
   get '/destinations/show' do
     @destinations = Destination.all
+    erb :'/destinations/show'
+  end
+  
+  post '/destinations/show' do 
+    @destinations = Destination.all
+  
     erb :'/destinations/show'
   end
 end
