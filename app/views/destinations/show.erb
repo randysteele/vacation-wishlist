@@ -1,8 +1,8 @@
-<p><%= @destination.content %>
+<p><%= @destinations.all %>
 
-<form method="post" action="/destinations/<%=@destination.id%>/delete">
+<form method="post" action="/destinations/show">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Destination">
 </form>
 
-<a href="/destinations/<%=@destination.id%>/edit">Edit Destination </a>
+<a href="/destinations/<%=@destinations.ids%>/edit">Edit Destination </a>

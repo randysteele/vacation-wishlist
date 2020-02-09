@@ -1,9 +1,9 @@
 class DestinationsController < ApplicationController
   
-  get "/destinations" do 
-    @destination = Destination.all 
-      erb '/destinations/show'
-    end
+  # get '/destinations/show' do 
+  #   @destination = Destination.all 
+  #     erb '/destinations/show'
+  #   end
     
    
   get '/destinations/new' do 
@@ -15,8 +15,8 @@ class DestinationsController < ApplicationController
       if params[:content] == ""
         redirect to "/destinations/new"
       else
-        @destination = current_user.destination.build(content: params[:content])
-        if @destination.save
+        @destinations = current_user.destination.build(content: params[:content])
+        if @destinations.save
           redirect to "/destinations/#{@destinations.id}"
         else
           redirect to "/destinations/new"
@@ -28,7 +28,7 @@ class DestinationsController < ApplicationController
   end
   
   get '/destinations/show' do
-    
+    @destinations = Destination.all
     erb :'/destinations/show'
   end
 end
