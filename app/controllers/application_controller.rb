@@ -13,17 +13,18 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
   
-  # get "/index" do 
-  #   erb :index
-  # end
+  get '/signup' do 
+    erb :signup
+  end
   
-  
-  
-  # post '/login' do
-  #   @destination = Destination.all 
-  #   erb :login
-  #   redirect '/create_destination'
-  # end
+  post '/signup' do
+    if params[:username] == "" || params[:password] == ""
+      redirect '/failure'
+    else
+      User.create(username: params[:username], password: params[:password])
+      redirect '/show'
+    end
+end
   
    helpers do
 
@@ -35,25 +36,4 @@ class ApplicationController < Sinatra::Base
       @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     end
  end
- 
-# get "/signup" do 
-#     erb :signup
-#   end
-  
-#   post "/signup" do
-#     @user = params[:username] == "" || params[:password] == ""
-#       # redirect '/failure'
-    
-#       User.create(username: params[:username], password: params[:password])
-#       redirect '/login'
-#     end
-    
-#     get '/users/:id' do
-#     if !logged_in?
-#       redirect '/destinations'
-#     end
-#   end  
-  
- 
-
 end
