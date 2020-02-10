@@ -15,7 +15,7 @@ class DestinationsController < ApplicationController
       @destinations = Destination.all 
       erb :'/destinations/new'
     else 
-       redirect to '/login'
+       redirect to '/destinations/show'
      end
   end
   
