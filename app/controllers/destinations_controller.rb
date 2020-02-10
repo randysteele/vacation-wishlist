@@ -20,14 +20,24 @@ class DestinationsController < ApplicationController
   end
   
   
-  get '/destinations/show' do
-    @destinations = Destination.find_by(params[:id])
-    erb :'/destinations/show'
+  get '/destinations/:id' do 
+    if logged_in?
+      @destinations = Destination.find_by_id(params[:id])
+      erb :'/destinations/show'
+    else 
+      redirect to '/login'
+    end
   end
   
-  post '/destinations/show' do 
-    @destinations = Destination.all
   
-    erb :'/destinations/show'
-  end
+  # get '/destinations/:show' do
+  #   @destinations = Destination.find_by(params[:id])
+  #   erb :'/destinations/show'
+  # end
+  
+  # post '/destinations/show' do 
+  #   @destinations = Destination.all
+  
+  #   erb :'/destinations/show'
+  # end
 end

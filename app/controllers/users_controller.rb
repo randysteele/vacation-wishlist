@@ -6,11 +6,12 @@ class UsersController < ApplicationController
   end
   
   post '/login' do 
-    @user = User.find_by(:username => params[:username])
-    if @user != nil && @user.password == params[:password]
-      session[:user_id] = @user.id
+     user = User.find_by(:username => params[:username])
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
       redirect to "/destinations/show"
-  
+    else
+      redirect to '/signup'
     end
   end
   
@@ -21,12 +22,13 @@ class UsersController < ApplicationController
   end  
 
  
-  get "/home" do 
-    erb :home 
-  end
-  
-  get "/new" do 
-    erb :new
+   get '/logout' do
+    if logged_in?
+      session.destroy
+      redirect to '/login'
+    else
+      redirect to '/'
+    end
   end
 
     
