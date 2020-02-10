@@ -12,7 +12,7 @@ class DestinationsController < ApplicationController
   
   post '/destinations/new' do
     if logged_in?
-      @destinations = Destinations.all 
+      @destinations = Destination.all 
       erb :'/destinations/new'
     else 
        redirect to '/login'
@@ -21,7 +21,7 @@ class DestinationsController < ApplicationController
   
   
   get '/destinations/show' do
-    @destinations = Destination.all
+    @destinations = Destination.find_by(params[:id])
     erb :'/destinations/show'
   end
   
