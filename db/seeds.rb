@@ -1,9 +1,12 @@
-randy = User.create(name: "Randy", username: steelerx155@gmail.com, password: "password")
-kristy = User.create(name: "Kristy", username: kritsy@gmail.com, password: "password")
+#creating users
 
-Destination.create(city: "Honolulu", state: "Hawaii", user_id: "distance: "25 hours", )
 
-randy.destinations.create(city: "Waikiki Beach")
+randy = User.create(:name => "Randy", :email => "steelerx155@gmail.com", :password => "password")
+kristy = User.create(:name => "Kristy", :email => "kristy@gmail.com", :password => "password")
 
-kristys_destination = kristy.destinations.build(city: "Colorado Springs")
+Destination.create(:city => "Honolulu", :state => "Hawaii", :distance => "25 hours")
+
+randy.destinations.create(:city => "Waikiki Beach")
+
+kristys_destination = kristy.destinations.build(:city => "Colorado Springs")
 kristys_destination.save
