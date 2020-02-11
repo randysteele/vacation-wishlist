@@ -10,12 +10,17 @@ class UsersController < ApplicationController
     @user = User.find_by(:email => params[:email])
     if @user.authenticate(params[:password])
     session[:user_id] = @user.id    
-    
+    redirect to "users#{@user.id}"
     else   
-      
       
   end
 end
+  
+  
+  
+  get '/users/:id' do
+    :erb '/show/users'
+  end
   
   
   get '/signup' do 
