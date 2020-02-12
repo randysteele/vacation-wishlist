@@ -64,9 +64,9 @@ end
     end
   
   
-  private
+  
   
    def set_destination
-    @destination = Destination.find(params[:id])
+    @destination = Destination.find(params[:email])
   end
 end
