@@ -10,21 +10,10 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
+    redirect_if_logged_in
     erb :index
   end
   
-  get '/signup' do 
-    erb :signup
-  end
-  
-  post '/signup' do
-    if params[:email] == "" || params[:password] == ""
-      redirect '/failure'
-    else
-      User.create(email: params[:email], password: params[:password])
-      redirect '/destinations/new'
-    end
-end
   
    helpers do
 
