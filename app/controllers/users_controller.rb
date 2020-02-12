@@ -46,5 +46,4 @@ end
       session.clear
       redirect '/'
     end
-  end
 end
