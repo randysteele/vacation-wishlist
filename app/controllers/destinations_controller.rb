@@ -18,7 +18,7 @@ class DestinationsController < ApplicationController
       redirect "/destinations/#{@destinations.id}"
     else 
       flash[:message] "Sorry, that didn't work! All fields are required!"
-       erb :'/destinations/new'
+       redirect'/destinations/new'
 end
 
 
@@ -28,10 +28,8 @@ end
     erb :'/destinations/show'
   end
 
-  post "/destinations/show" do 
-   @city = params[:city] 
-   @state = params[:state]
-   @distance = params[:distance]
+  post "/destinations/:id" do 
+   set_destinations
    erb :'/destinations/show'
   end
 end
