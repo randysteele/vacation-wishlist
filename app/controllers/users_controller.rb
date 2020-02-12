@@ -7,14 +7,12 @@ class UsersController < ApplicationController
   
   post '/login' do 
     @user = User.find_by(:email => params[:email])
-    
-    if @user.authenticate(params[:password])
-      
+    if @user && @user.authenticate(params[:password])
     session[:user_id] = @user.id   
-    puts session
-    redirect "#{@user.id}"
-  # else
-  #   redirect '/login/'
+    flash[:message] = "Welcome, #{@user.name}!"
+    redirect "users/#{@user.id}"
+  else
+    redirect '/login/'
   end
 end
 
@@ -22,8 +20,8 @@ end
    if params[:name] != "" && params[:email] != "" && params[:password] != ""
    @user = User.create[params]
     redirect to '/users/#{user.id}'
-  # else
-  #   redirect to '/error'
+   else
+    flash[:errors] = "Your username or password is invalid.  Please sign up or try again."
   end
 end 
   

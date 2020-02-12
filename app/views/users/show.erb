@@ -1,6 +1,4 @@
-<p> Here are your Vacation Wishlist Destinations, <%= @user.username %>
-<% @user.destinations.each do |destination| %>
-  <div>
-    <%= destination.content %>
-  </div>
-<% end %>
+<h2><%= @user.name %>'s Show Page</h2>
+
+<h3>Email: </h3>
+<h4><%= @user.email %></h4>
