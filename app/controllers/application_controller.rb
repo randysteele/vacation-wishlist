@@ -10,10 +10,11 @@ class ApplicationController < Sinatra::Base
     register Sinatra::Flash
   end
 
-  get "/" do
+  get '/' do
     redirect_if_logged_in
     erb :index
   end
+  
   
   
    helpers do

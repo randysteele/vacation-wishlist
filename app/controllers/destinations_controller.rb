@@ -7,11 +7,12 @@ class DestinationsController < ApplicationController
     
    
   get '/destinations/new' do 
-    redirect if_not_logged_in
+   redirect_if_not_logged_in
     erb :'/destinations/new'
   end
 
   post '/destinations/' do
+    redirect_if_not_logged_in
     if params[:city] != ""
       @destinations = Destination.create(:city => params[:city], :user_id => current_user.id, :state => params[:state], :distance => params[:distance])
       flash[:message] = "Congrats! You've Successfully Created A New Destination!" if @destinations.id
@@ -22,13 +23,13 @@ class DestinationsController < ApplicationController
  end
 end
 
-  get "/destinations/show" do
+  get '/destinations/show' do
      @destinations = Destination.all
     # @destinations = Destination.find_by(params[:id])
     erb :'/destinations/show'
   end
 
-  post "/destinations/:id" do 
+  post '/destinations/:id' do 
    set_destinations
    erb :'/destinations/show'
   end
