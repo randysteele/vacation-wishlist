@@ -1,6 +1,7 @@
 class UsersController < ApplicationController 
   
   get '/login' do 
+    redirect_if_logged_in
     erb :login
   end
   
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
     flash[:message] = "Welcome, #{@user.name}!"
     redirect "users/#{@user.id}"
   else
+     flash[:errors] = "Your credentials were invalid.  Please sign up or try again."
     redirect '/login/'
   end
 end
