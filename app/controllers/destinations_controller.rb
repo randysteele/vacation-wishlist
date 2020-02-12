@@ -11,7 +11,7 @@ class DestinationsController < ApplicationController
   end
 
   post '/destinations/new' do
-      @destinations = Destinations.all 
+      @destinations = Destination.all 
        erb :'/destinations/new'
 end
 
