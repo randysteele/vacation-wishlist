@@ -23,14 +23,52 @@ class DestinationsController < ApplicationController
  end
 end
 
-  get '/destinations/show' do
-     @destinations = Destination.all
-    # @destinations = Destination.find_by(params[:id])
+  get '/destinations/:id' do
+    set_destination
     erb :'/destinations/show'
   end
+  
+   get '/journal_entries/:id/edit' do
+     redirect_if_not_logged_in
+     set_destination
+     if authorized_to_edit?(@destinations)
+       erb :'destinations/edit'
+     else
+       redirect "users/#{current_user.id}"
+     end
+   end
 
-  post '/destinations/:id' do 
-   set_destinations
-   erb :'/destinations/show'
+  patch '/destinations/:id' do 
+    redirect_if_not_logged_in
+   set_destination
+   if @destination.user == current_user && params[:city] !+ ""
+     @destination.update(:city => params[:city])
+     redirect "destinations/#{destinations.id}"
+   else
+     redirect "users/#{current_user.id}"
+   end
+ end
+  
+  
+  delete '/destinations/:id' do 
+    set_destination
+    if authorized_to_edit?(@destinations)
+      @destinations.destroy
+      flash[:message] "Successfully deleted the selected destination"
+      redirect '/destinations'
+      else
+        redirect
+  
+  
+  
+  
+  
+  
+  
+  
+  private
+  
+   def set_destination
+    @destination = Destination.find(params[:id)
   end
 end
