@@ -11,10 +11,11 @@ class DestinationsController < ApplicationController
     erb :'/destinations/new'
   end
 
-  post '/destinations/' do
+  post '/destinations/new' do
     redirect_if_not_logged_in
     if params[:city] != ""
       @destinations = Destination.create(:city => params[:city], :user_id => current_user.id, :state => params[:state], :distance => params[:distance])
+    
       flash[:message] = "Congrats! You've Successfully Created A New Destination!" if @destinations.id
       redirect "/destinations/#{@destinations.id}"
     else 
@@ -41,8 +42,8 @@ end
   patch '/destinations/:id' do 
     redirect_if_not_logged_in
    set_destination
-   if @destination.user == current_user && params[:city] !+ ""
-     @destination.update(:city => params[:city])
+   if @destinations.user == current_user && params[:city] != ""
+     @destinations.update(:city => params[:city])
      redirect "destinations/#{destinations.id}"
    else
      redirect "users/#{current_user.id}"
@@ -54,21 +55,18 @@ end
     set_destination
     if authorized_to_edit?(@destinations)
       @destinations.destroy
-      flash[:message] "Successfully deleted the selected destination"
+      flash[:message] = "Successfully deleted the selected destination"
       redirect '/destinations'
       else
-        redirect
-  
-  
-  
-  
-  
-  
+        redirect '/destinations'
+      end
+      
+    end
   
   
   private
   
    def set_destination
-    @destination = Destination.find(params[:id)
+    @destination = Destination.find(params[:id])
   end
 end
