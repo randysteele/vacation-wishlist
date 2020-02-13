@@ -26,11 +26,9 @@ end
 
 
   get '/destinations/:id' do
-   #  binding.pry
-    # set_destination
-     @destinations = Destination.find_by_id(params[:id])
-    # 
+    @destinations = Destination.find(params[:id])
     erb :'/destinations/show'
+    
   end
   
    get '/destinations/:id/edit' do
@@ -44,8 +42,6 @@ end
      end
    end
 
-  
-  
   
   delete '/destinations/:id' do 
     set_destination
@@ -70,10 +66,10 @@ end
  end
     
     
-    private 
+  #   private 
     
-    def set_destination
-    @destinations = Destination.find_by_id(params[:id])
-  end
+  #   def set_destination
+  #   @destinations = Destination.find_by_id(params[:id])
+  # end
    
 end
