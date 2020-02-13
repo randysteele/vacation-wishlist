@@ -12,9 +12,24 @@ class DestinationsController < ApplicationController
   end
 
 
-  get '/destinations/show' do
-    # binding.pry
-    set_destination
+  post '/destinations/' do
+    redirect_if_not_logged_in
+    if params[:city] != ""
+    # @destinations = Destination.create(:city => params[:city], :user_id => current_user.id, :state => params[:state], :distance => params[:distance])
+    @destinations = Destination.create(city: params[:city], user_id: current_user.id, state: params[:state], distance: params[:distance]) 
+      flash[:message] = "Congrats! You've Successfully Created A New Destination!" if @destinations.id
+      redirect "/destinations/#{@destinations.id}"
+    else 
+      flash[:message] = "Sorry, that didn't work! All fields are required!"
+       redirect'/destinations/new'
+ end
+end
+
+  get '/destinations/:id' do
+   #  binding.pry
+     set_destination
+     @destinations = Destination.find_by_id(params[:id])
+    # 
     erb :'/destinations/show'
   end
   
@@ -52,19 +67,6 @@ class DestinationsController < ApplicationController
       
     end
     
-    post '/destinations/new' do
-    redirect_if_not_logged_in
-    if params[:city] != ""
-      @destinations = Destination.create(:city => params[:city], :user_id => current_user.id, :state => params[:state], :distance => params[:distance])
-    
-      flash[:message] = "Congrats! You've Successfully Created A New Destination!" if @destinations.id
-      redirect "/destinations/#{@destinations.id}"
-    else 
-      flash[:message] = "Sorry, that didn't work! All fields are required!"
-       redirect'/destinations/new'
- end
-end
-  
    def set_destination
     @destination = Destination.find_by_id(params[:id])
   end
