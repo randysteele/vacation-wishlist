@@ -31,20 +31,8 @@ end
     
   end
   
-   get '/destinations/:id/edit' do
-     redirect_if_not_logged_in
-     set_destination
-     if authorized_to_edit?(@destinations)
-       erb :'destinations/edit'
-     else
-       redirect "/users/#{current_user.id}"
-       
-     end
-   end
-
-  
   delete '/destinations/:id' do 
-    set_destination
+    @destinations = Destination.find_by_id(params[:id])
     if authorized_to_edit?(@destinations)
       @destinations.destroy
       flash[:message] = "Successfully deleted the selected destination"
@@ -54,7 +42,7 @@ end
       end
     end
     
-    post '/destinations/:id' do 
+    patch '/destinations/:id' do 
     redirect_if_not_logged_in
    set_destination
    if @destinations.user == current_user && params[:city] != ""
@@ -65,6 +53,16 @@ end
    end
  end
     
+     get '/destinations/:id/edit' do
+     redirect_if_not_logged_in
+     if @destinations = Destination.find_by_id(params[:id])
+       erb :'destinations/edit'
+     else
+       redirect "/users/#{current_user.id}"
+       
+     end
+   end
+
     
   #   private 
     

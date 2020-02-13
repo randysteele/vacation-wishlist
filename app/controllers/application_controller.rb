@@ -28,9 +28,9 @@ class ApplicationController < Sinatra::Base
     end
  end
  
- def authorized_to_edit?(destination)
-   destination.user == current_user
- end
+    # def authorized_to_edit?(destinations)
+    #   destinations.id == current_user
+    # end
  
      def redirect_if_not_logged_in
       if !logged_in?

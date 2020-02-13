@@ -1,0 +1,14 @@
+<h1> Edit Destinations!</h1>
+
+
+
+<form class="" action="/destinations/<%= @destinations.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="city">City:</label>
+  <input type="text" name="city" value ="<%= @destinations.city %>"><br>
+  <label for="state">State:</label>
+  <input name="state"><%= @destinations.state %></input><br>
+  <label for="distance">Approximate Distance:</label>
+  <input type="text" name="distance" value ="<%= @destinations.distance %> Hours">
+  <input type="submit" name="" value="Submit Changes">
+</form>
