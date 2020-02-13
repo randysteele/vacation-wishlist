@@ -1,15 +1,20 @@
-All Destinations! 
+<h2> Here are all of your current destinations!  </h2>
 
 
 <% @destinations.each do |destination| %>
-<h2> <a href="/destinations/<%=destination.id %></a></h2>
-<p><%= destination.city %><p>
-<p><%= destination.state %></p>
-<p><%= destination.distance %></a>
-<% end %>
+<h2>Destination id: <%=destination.id %> </h2>
+<h2>Destination City: <%= destination.city %> </h2>
+<h2>Destination State: <%= destination.state %> </h2>
+<h2>Approximate Travel Time: <%= destination.distance %> Hours</h2>
+      <% end %>
+
+<br><br><br><br><br><br><br><br><br>
 
 
 
 
 
 
+
+
+<a href="/logout">Log out</a> 

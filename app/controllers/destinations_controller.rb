@@ -2,6 +2,7 @@ class DestinationsController < ApplicationController
   
   get '/destinations' do 
     @destinations = Destination.all 
+    logged_in?
       erb :'/destinations/index'
     end
     
