@@ -43,8 +43,8 @@ end
     redirect_if_not_logged_in
    set_destination
    if @destinations.user == current_user && params[:city] != ""
-     @destinations.update(:city => params[:city])
-     redirect "destinations/#{destinations.id}"
+     @destinations.update(city: params[:city])
+     redirect "/destinations/# {destinations.id}"
    else
      redirect "users/#{current_user.id}"
    end
@@ -67,6 +67,6 @@ end
   
   
    def set_destination
-    @destination = Destination.find(params[:email])
+    @destination = Destination.find_by_id(params[:id])
   end
 end
