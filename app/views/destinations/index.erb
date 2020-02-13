@@ -1,21 +1,15 @@
 All Destinations! 
 
 
-<% @Destinations.each do |destination| %>
-<h2> <a href="/destinations/<%=destinations.id%></h2>
-
-
-
-
-ALL JOURNAL ENTRIES
-<% @journal_entries.each do |journal_entry| %>
-  <h4><a href="/journal_entries/<%= journal_entry.id %>"><%= journal_entry.created_at %></a></h4>
-  <strong><%= journal_entry.title %></strong>
-  <p><%= journal_entry.content %></p>
-  <p>Mood: <%= journal_entry.mood %></p>
-  <p>By <%= journal_entry.user.name %></p>
-  <br><br>
+<% @destinations.each do |destination| %>
+<h2> <a href="/destinations/<%=destination.id %></a></h2>
+<p><%= destination.city %><p>
+<p><%= destination.state %></p>
+<p><%= destination.distance %></a>
 <% end %>
+
+
+
 
 
 

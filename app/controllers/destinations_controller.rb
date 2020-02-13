@@ -2,11 +2,11 @@ class DestinationsController < ApplicationController
   
   get '/destinations' do 
     @destinations = Destination.all 
-      erb '/destinations/index'
+      erb :'/destinations/index'
     end
     
     post '/destinations/' do
-    redirect_if_not_logged_in
+    # redirect_if_not_logged_in
     if params[:city] != ""
      @destinations = Destination.create(:city => params[:city], :user_id => current_user.id, :state => params[:state], :distance => params[:distance])
    # @destinations = Destination.create(city: params[:city], user_id: current_user.id, state: params[:state], distance: params[:distance]) 
@@ -26,7 +26,7 @@ end
 
 
   get '/destinations/:id' do
-    @destinations = Destination.find(params[:id])
+    @destinations = Destination.find_by_id(params[:id])
     erb :'/destinations/show'
     
   end
@@ -44,7 +44,7 @@ end
     
     patch '/destinations/:id' do 
     redirect_if_not_logged_in
-   set_destination
+  # set_destination
    if @destinations.user == current_user && params[:city] != ""
       @destinations.update(city: params[:city])
      redirect  "/destinations/#{destinations.id}"
@@ -54,13 +54,13 @@ end
  end
     
      get '/destinations/:id/edit' do
-     redirect_if_not_logged_in
-     if @destinations = Destination.find_by_id(params[:id])
+    # redirect_if_not_logged_in
+     @destinations = Destination.find_by_id(params[:id])
        erb :'destinations/edit'
-     else
-       redirect "/users/#{current_user.id}"
+    # else
+    #   redirect "/users/#{current_user.id}"
        
-     end
+    # end
    end
 
     
