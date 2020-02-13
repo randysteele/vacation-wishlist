@@ -2,10 +2,10 @@
 
 
 <% @destinations.each do |destination| %>
-<h2>Destination id: <%=destination.id %> </h2>
-<h2>Destination City: <%= destination.city %> </h2>
-<h2>Destination State: <%= destination.state %> </h2>
-<h2>Approximate Travel Time: <%= destination.distance %> Hours</h2>
+<ol>Destination id: <%=destination.id %> </ol> 
+<h4>Destination City: <%= destination.city %> </h4>
+<h4>Destination State: <%= destination.state %> </h4>
+<h4>Approximate Travel Time: <%= destination.distance %> Hours</h4><br><br>
       <% end %>
 
 <br><br><br><br><br><br><br><br><br>
