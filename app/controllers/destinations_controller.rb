@@ -46,7 +46,7 @@ end
     patch '/destinations/:id' do 
     redirect_if_not_logged_in
   # set_destination
-   if @destinations.user == current_user && params[:city] != ""
+   if @destinations.user == @current_user ||= User.find_by(id: session[:user_id])  && params[:city] != ""
       @destinations.update(city: params[:city])
      redirect  "/destinations/#{destinations.id}"
    else
