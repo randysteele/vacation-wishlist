@@ -4,10 +4,4 @@
 <h4>State: <%=@destinations.state %>    </h4>
 <h4>Approximate Distance:  <%=@destinations.distance %> Hours     </h4>
 
- <a href="/destinations/<%= @destinations.id %>/edit">Edit Entry</a>
-  <br><br>
-  <form class="" action="/destinations/<%= @destinations.id %>" method="post">
-    
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" name="" value="Delete this Destination">
-  </form>
+

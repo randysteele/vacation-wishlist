@@ -12,3 +12,11 @@
   <input type="text" name="distance" value ="<%= @destinations.distance %> Hours">
   <input type="submit" name="" value="Submit Changes">
 </form>
+
+<a href="/destinations/<%= @destinations.id %>/edit">Edit Entry</a>
+  <br><br>
+  <form class="" action="/destinations/<%= @destinations.id %>" method="post">
+    
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="" value="Delete this Destination">
+  </form>
