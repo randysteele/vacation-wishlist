@@ -24,6 +24,11 @@ end
    redirect_if_not_logged_in
     erb :'/destinations/new'
   end
+  
+  post '/destinations/new' do
+    @destinations = Destination.create(:city => params[:city], :user_id => current_user.id, :state => params[:state], :distance => params[:distance])
+    redirect :"/destinations"
+  end
 
 
   get '/destinations/:id' do
