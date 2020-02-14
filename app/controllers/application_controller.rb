@@ -8,6 +8,7 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "vacation_secret"
     enable :sessions 
     register Sinatra::Flash
+    set :method_override, true
   end
 
   get '/' do
@@ -28,9 +29,9 @@ class ApplicationController < Sinatra::Base
     end
  end
  
-    # def authorized_to_edit?(destinations)
-    #   destinations.id == current_user
-    # end
+    def authorized_to_edit?(destinations)
+      destinations.id == current_user
+    end
  
      def redirect_if_not_logged_in
       if !logged_in?
