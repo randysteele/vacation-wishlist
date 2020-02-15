@@ -1,6 +1,6 @@
 class DestinationsController < ApplicationController
   
-  get '/destinations' do 
+  get '/destinations/' do 
     @destinations = Destination.all 
     logged_in?
       erb :'/destinations/index'
@@ -50,12 +50,13 @@ end
     
     patch '/destinations/:id' do 
     redirect_if_not_logged_in
-  # set_destination
+   @destinations = Destination.find_by_id(params[:id])
    if @destinations.user == @current_user ||= User.find_by(id: session[:user_id])  && params[:city] != ""
-      @destinations.update(city: params[:city])
-     redirect  "/destinations/#{destinations.id}"
-   else
-    # redirect "users/#{current_user.id}"
+   #   if @destinations.user == current_user && params[:city] != ""
+      @destinations.update(:city => params[:city], :state => params[:state], :distance => params[:distance])
+     redirect  '/destinations/#{destinations.id}'
+  # else
+  #   redirect '/users/#{current_user.id}'
    end
  end
     
