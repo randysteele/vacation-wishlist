@@ -11,9 +11,10 @@ class DestinationsController < ApplicationController
     if params[:city] != ""
      @destinations = Destination.create(:city => params[:city], :user_id => current_user.id, :state => params[:state], :distance => params[:distance])
    # @destinations = Destination.create(city: params[:city], user_id: current_user.id, state: params[:state], distance: params[:distance]) 
-      flash[:message] = "Congrats! You've Successfully Created A New Destination!" if @destinations.id
-      redirect "/destinations/#{@destinations.id}"
-    else 
+      flash[:message] = "Congrats! You've Successfully Created A New Destination!" 
+     # if @destinations.id
+     # redirect "/destinations/#{@destinations.id}"
+   # else 
       flash[:message] = "Sorry, that didn't work! All fields are required!"
        redirect'/destinations/new'
  end
@@ -21,13 +22,13 @@ end
 
 
   get '/destinations/new' do 
-   redirect_if_not_logged_in
+  # redirect_if_not_logged_in
     erb :'/destinations/new'
   end
   
   post '/destinations/new' do
     @destinations = Destination.create(:city => params[:city], :user_id => current_user.id, :state => params[:state], :distance => params[:distance])
-    redirect :"/destinations"
+    redirect :"/destinations/"
   end
 
 
@@ -54,9 +55,9 @@ end
    if @destinations.user == @current_user ||= User.find_by(id: session[:user_id])  && params[:city] != ""
    #   if @destinations.user == current_user && params[:city] != ""
       @destinations.update(:city => params[:city], :state => params[:state], :distance => params[:distance])
-     redirect  '/destinations/#{destinations.id}'
+     redirect  :"/destinations/# {destinations.id}"
   # else
-  #   redirect '/users/#{current_user.id}'
+  #  redirect '/users/#{current_user.id}'
    end
  end
     
