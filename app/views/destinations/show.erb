@@ -2,12 +2,15 @@
 
 <h4>City: <%=@destinations.city %>    </h4>
 <h4>State: <%=@destinations.state %>    </h4>
-<h4>Approximate Distance:  <%=@destinations.distance %> Hours     </h4>
+<h4>Approximate Distance:  <%=@destinations.distance %> Hours     </h4> <br><br><br>
 
 
 
+<a href="/destinations/<%= @destinations.id %>/edit">Edit Entry</a><br><br><br>
 
 
+
+<a href="/destinations/new"> Create a New Destination!</a><br><br><br><br><br>
 
 
 <a href="/logout">Log out</a> 
