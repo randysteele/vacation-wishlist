@@ -1,8 +1,18 @@
-<h1><%= @user.name%>'s Show Page</h1>
+<h1><%= @user.name%>'s Home Page</h1>
 
 <h3>Email: </h3> 
 
-<h4><%= @user.email %></h4><br><br><br><br><br><br>
+<h4><%= @user.email %></h4><br><br><br>
 
 
-<a href="/logout">Log out</a> 
+ You currently have <%=Destination.count%> Destinations!<br><br><br>
+
+<a href="/destinations/"> View Your Destinations Here!</a><br>
+
+<a href="/destinations/new"> Create a New Destination!</a><br>
+
+
+
+
+
+<a href="/logout">Log out</a> <br>
