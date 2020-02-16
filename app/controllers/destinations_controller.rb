@@ -42,7 +42,7 @@ end
     # if authorized_to_edit?(@destinations)
       @destinations.destroy
       flash[:message] = "Successfully deleted the selected destination"
-      redirect '/destinations'
+      redirect '/destinations/'
     #  else
      #   redirect '/destinations'
      # end
@@ -63,7 +63,7 @@ end
      get '/destinations/:id/edit' do
     # redirect_if_not_logged_in
      @destinations = Destination.find_by_id(params[:id])
-       erb :'destinations/edit'
+       erb :'/destinations/edit'
     # else
     #   redirect "/users/#{current_user.id}"
        
