@@ -10,14 +10,13 @@ class ApplicationController < Sinatra::Base
     register Sinatra::Flash
     set :method_override, true
   end
+  
+  helpers do 
 
   get '/' do
     redirect_if_logged_in
     erb :index
   end
-  
-  
-   helpers do
 
     def logged_in?
       !!current_user
@@ -29,7 +28,7 @@ class ApplicationController < Sinatra::Base
  end
  
     def authorized_to_edit?(destinations)
-      destinations.id == current_user
+      destinations.user == current_user
     end
  
      def redirect_if_not_logged_in
@@ -41,7 +40,8 @@ class ApplicationController < Sinatra::Base
     
   def redirect_if_logged_in
       if logged_in?
-        redirect "/users/#{current_user.id}"
+       # redirect "/users/#{current_user.id}"
+       redirect "/users/#{current_user.id}" 
       end
     end
 end
