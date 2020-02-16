@@ -61,13 +61,15 @@ end
  end
     
      get '/destinations/:id/edit' do
-    # redirect_if_not_logged_in
+   #  redirect_if_not_logged_in
      @destinations = Destination.find_by_id(params[:id])
+     if @destinations.user == current_user && params[:city] != ""
+    # @destinations = Destination.find_by_id(params[:id])
        erb :'/destinations/edit'
     # else
     #   redirect "/users/#{current_user.id}"
        
-    # end
+     end
    end
 
     
