@@ -1,7 +1,7 @@
 class UsersController < ApplicationController 
   
   get '/login' do 
-  # redirect_if_logged_in
+   redirect_if_logged_in
     erb :login
   end
   
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     redirect "users/#{@user.id}"
   else
     flash[:errors] = "Your credentials were invalid.  Please sign up or try again."
-    # redirect '/login'
+     redirect '/login'
   end
 end
 
@@ -29,11 +29,9 @@ end
      @user = User.new(params)
      if @user.save 
        session[:user_id] = @user.id
-       flash[:message] = "You have successfully created an account, #{@user.name}! Welcome!"
       redirect "/users/#{@user.id}"
     else
-      flash[:errors] = "Account creation failure: #{@user.errors.full_messages.to_sentence}"
-      # redirect '/signup'
+       redirect '/signup'
   end
 end 
   
