@@ -56,7 +56,7 @@ end
      if @destinations.user == current_user && params[:city] != ""
        erb :'/destinations/edit'
      else
-       redirect :"/users/# {current_user.id}"
+       redirect :"/users/#{current_user.id}"
      end
    end
 end

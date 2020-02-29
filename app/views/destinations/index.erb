@@ -2,10 +2,8 @@
 
 
 <% @destinations.each do |destination| %>
-<ol>Destination id: <%=destination.id %> </ol> 
-<h4>Destination City: <%= destination.city %> </h4>
-<h4>Destination State: <%= destination.state %> </h4>
-<h4>Approximate Travel Time: <%= destination.distance %> Hours</h4><br><br>
+      <a href= "/destinations/<%=destination.id %>" ><%= destination.city %></a>
+
       <% end %>
 
 <br><br><br><br><br><br>
