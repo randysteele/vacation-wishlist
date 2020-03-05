@@ -13,5 +13,6 @@ require './app/controllers/application_controller'
 require_all 'app'
 require './app/controllers/destinations_controller'
 require './app/controllers/users_controller'
+require 'sinatra/flash'
 
-
+enable :sessions

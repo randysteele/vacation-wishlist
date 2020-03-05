@@ -10,11 +10,12 @@ class UsersController < ApplicationController
     @user = User.find_by(:email => params[:email])
     if @user && @user.authenticate(params[:password])
     session[:user_id] = @user.id   
-    flash[:message] = "Welcome, #{@user.name}!"
+    flash[:errors] = "Welcome, #{@user.name}!"
     redirect "users/#{@user.id}"
-  else
-    flash[:errors] = "Your credentials were invalid.  Please sign up or try again."
+  else    
+    flash[:message] = "Your credentials were invalid.  Please sign up or try again."
      redirect '/login'
+     
   end
 end
 
@@ -26,11 +27,11 @@ end
   
    post '/signup' do 
     
-     @user = User.new(params)
+    @user = User.new(params)
      if @user.save 
-       session[:user_id] = @user.id
+      session[:user_id] = @user.id
       redirect "/users/#{@user.id}"
-    else
+     else
        redirect '/signup'
   end
 end 
@@ -38,7 +39,7 @@ end
   get '/users/:id' do
     @user = User.find_by(id: params[:id])
     redirect_if_not_logged_in
-    erb :'/users/show'
+      erb :'/users/show'
   end
   
 
