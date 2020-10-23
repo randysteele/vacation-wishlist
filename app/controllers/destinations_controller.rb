@@ -24,8 +24,9 @@ class DestinationsController < ApplicationController
   end
   
   post '/destinations/new' do
-    @destinations = Destination.create(:city => params[:city], :user_id => current_user.id, :state => params[:state], :distance => params[:distance])
+    @destinations = current_user.destinations.create(params)
     redirect :"/destinations/"
+
   end
 
 
