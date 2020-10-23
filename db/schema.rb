@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201023161326) do
-
-  create_table "completed", force: :cascade do |t|
-    t.boolean "complete"
-  end
+ActiveRecord::Schema.define(version: 20201023170653) do
 
   create_table "destinations", force: :cascade do |t|
     t.string  "city"
