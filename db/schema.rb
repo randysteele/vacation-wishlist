@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20201023170653) do
     t.integer "user_id"
     t.integer "distance"
     t.string  "top_attraction"
+    t.boolean "complete"
   end
 
   create_table "users", force: :cascade do |t|
