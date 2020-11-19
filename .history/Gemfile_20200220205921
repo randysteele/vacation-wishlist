@@ -13,11 +13,6 @@ gem 'bcrypt'
 gem 'tux'
 gem 'sinatra-flash'
 
-group :production do
-   gem 'pg'
-   gem 'activerecord-postgresql-adapter'
-end
-
 group :test do
   gem 'rspec'
   gem 'capybara'
