@@ -13,13 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20201023170653) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "destinations", force: :cascade do |t|
     t.string  "city"
     t.string  "state"
     t.integer "user_id"
     t.integer "distance"
     t.string  "top_attraction"
-    t.boolean "complete"
   end
 
   create_table "users", force: :cascade do |t|
