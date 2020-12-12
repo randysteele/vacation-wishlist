@@ -12,7 +12,7 @@ gem 'bcrypt'
 gem 'tux'
 gem 'sinatra-flash'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
-gem 'sqlite3'
+
 
 
 group :test do
