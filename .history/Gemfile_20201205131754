@@ -12,8 +12,6 @@ gem 'bcrypt'
 gem 'tux'
 gem 'sinatra-flash'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
-gem 'sqlite3'
-
 
 group :test do
   gem 'rspec'
@@ -24,6 +22,7 @@ group :test do
 
   group :development do
   gem 'sqlite3'
+  gem 'pg'
   end
 
 end

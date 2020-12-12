@@ -2,7 +2,7 @@
 
 
 <% @destinations.each do |destination| %>
-      <a href= "/destinations/<%=destination.id %>" ><%= destination.city %></a>
+      <a href= "/destinations/<%=destination.id %>" ><li><%= destination.city %></a></li>
 
       <% end %>
 
